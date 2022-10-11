@@ -35,7 +35,7 @@
 <li>Storing the objects into a file</li>
 </h3>
 </ul>
-<img src="https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOU5BHMTQX4%2F20221011%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20221011T144449Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=01ad1eac505ed3af57a69f9240caee3b66ca3258a74e41abda7e341d05c58ea2">
+<img src="https://www.spaceotechnologies.com/wp-content/uploads/2020/06/web-application-architecture-1.png">
 <br>
 <h1><center>Examples</center></h1>
 <h2>Interactive mode:</h2>
