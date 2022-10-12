@@ -20,15 +20,15 @@ class BaseModel:
         """datetime.datetime.now().isoformat(format_date_time)"""
 
     def save(self):
-        self.updated_at = datetime.strptime(t_data, format_dt)
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """the dict method and its key value and pairs"""
         dict = {
-            'id': 'id',
-            'created_at': self.created_at.strptime(t_data, format_dt),
+            '__class__.': self.__class__.__name__,
             'updated_at': self.updated_at.strptime(t_data, format_dt),
-            '__class__.': self.__class__.__name__
+            'id': self.id,
+            'created_at': self.created_at.strptime(t_data, format_dt)
         }
         return dict
 
