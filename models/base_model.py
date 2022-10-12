@@ -14,10 +14,30 @@ class BaseModel:
     """Creating the BaseModel class"""
     def __init__(self, *args, **kwargs):
         """Initializing the BaseModel class"""
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.strptime(t_data, format_dt)
-        self.updated_at = datetime.strptime(t_data, format_dt)
-        """datetime.datetime.now().isoformat(format_date_time)"""
+        if len(kwargs) > 0:
+            for key, t_data in kwargs.items():
+                """initializing the loop to itirate through\
+                    the items of the kwargs"""
+                if key == "created_at":
+                    """if the key if == to created_at\
+                        it will create an instance for the \
+                        datetime of the created_at"""
+                    self.created_at = datetime.strptime(t_data, format_dt)
+                elif t_data == "updated_at":
+                    """if the time_data == update it will\
+                        create an instance of the time_data\
+                        for the update"""
+                    self.updated_at = datetime.strptime(t_data, format_dt)
+                elif key != "__class__":
+                    """if the key does not == class\
+                    it will set the attributes for the id,\
+                    the key and the time data"""
+                    setattr(self, key, t_data)
+        else:
+            """the random instances created"""
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def save(self):
         """updating the public instance with the current\
