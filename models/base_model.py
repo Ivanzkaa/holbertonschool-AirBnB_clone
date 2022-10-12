@@ -27,7 +27,7 @@ class BaseModel:
     def to_dict(self):
         """the dict method and its key value and pairs"""
         dic = {
-            '__class__.': self.__class__.__name__,
+            '__class__': self.__class__.__name__,
             'updated_at': self.updated_at.strftime(format_dt),
             'id': self.id,
             'created_at': self.created_at.strftime(format_dt)
