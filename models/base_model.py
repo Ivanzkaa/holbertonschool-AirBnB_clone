@@ -13,6 +13,7 @@ format_dt = "%Y-%m-%dT%H:%M:%S.%f"
 
 class BaseModel:
     """Creating the BaseModel class"""
+
     def __init__(self, *args, **kwargs):
         """Initializing the BaseModel class"""
         if len(kwargs) > 0:
@@ -59,4 +60,4 @@ class BaseModel:
         return dic
 
     def __str__(self):
-        return "[{}] ({}) {}".format(self.__class__.__name__,self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
