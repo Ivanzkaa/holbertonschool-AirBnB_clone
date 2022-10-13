@@ -4,6 +4,7 @@
 
 from datetime import datetime
 import uuid
+import models
 
 
 t_data = "2017-06-14T22:31:03.285259"
@@ -23,8 +24,8 @@ class BaseModel:
                         it will create an instance for the \
                         datetime of the created_at"""
                     self.created_at = datetime.strptime(t_data, format_dt)
-                elif t_data == "updated_at":
-                    """if the time_data == update it will\
+                elif key == "updated_at":
+                    """if the key == update it will\
                         create an instance of the time_data\
                         for the update"""
                     self.updated_at = datetime.strptime(t_data, format_dt)
@@ -37,12 +38,15 @@ class BaseModel:
             """the random instances created"""
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.updated_at = self.created_at
+            models.storage.new(self)
 
     def save(self):
         """updating the public instance with the current\
             datetime"""
         self.updated_at = datetime.now()
+        """calling the method save(self) of storage"""
+        models.storage.save()
 
     def to_dict(self):
         """the dict method and its key value and pairs"""
