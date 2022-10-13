@@ -132,9 +132,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         if len(line) == 1:
             print("** instance id missing **")
-        obj = storage.all()
-        storage = FileStorage
+
         obj_key = list_of_str[0] + "." + list_of_str[1]
+        storage = FileStorage
+        obj = storage.all()
         the_instance = False
 
         for key, value in obj.items():
@@ -147,6 +148,7 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         if len(line) < 4:
             print("** value missing **")
+
         the_instance.save()
 
 if __name__ == '__main__':
