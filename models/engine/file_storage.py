@@ -24,16 +24,16 @@ class FileStorage:
 
     def save(self):
         """serializes the objects to JSON files"""
-        first_obj = self.__objects
-        obj_dict = {obj: first_obj[obj].to_dict() for obj in first_obj.keys()}
+        firstobj = self.__objects
+        objdict = {obj: firstobj[obj].to_dict() for obj in firstobj.keys()}
         with open(self.__file_path, "w") as f:
-            json.dump(obj_dict, f)
+            json.dump(objdict, f)
         
     def reload(self):
         """Deserializes the JSON file to __objects"""
         try:
-            with open(self.__file_path, 'r', encoding="UTF8") as fd:
-                obj_dir = json.loads(fd.read())
+            with open(self.__file_path, 'r', encoding="UTF8") as f:
+                obj_dir = json.loads(f.read())
                 for key, value in obj_dir.items():
                     self.__objects[key] = BaseModel(**value)
         except:
