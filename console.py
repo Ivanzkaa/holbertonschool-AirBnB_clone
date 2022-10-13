@@ -6,11 +6,22 @@ import cmd
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.review import Review
 
 
-
-classes = {"BaseModel", "User", "Review", "Place",
-            "State", "City", "Amenity"}
+classes = {
+    "BaseModel": BaseModel,
+    "User": User,
+    "Place": Place,
+    "State": State,
+    "City": City,
+    "Amenity": Amenity,
+    "Review": Review
+}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -45,14 +56,14 @@ class HBNBCommand(cmd.Cmd):
         the id"""
         if len(line) == 0:
             print("** class name missing **")
-
-        try:
-            str = line + "()"
-            base_inst = eval(str)
-            base_inst.save()
-            print(base_inst.id)
-        except:
-            print("** class doesn't exist **")
+        else:
+            if line not in classes:
+                print("** class doesn't exist **")
+            else:
+                str = line + "()"
+                base_inst = eval(str)
+                base_inst.save()
+                print(base_inst.id)
 
     def do_show(self, line):
         """printing the representation\
