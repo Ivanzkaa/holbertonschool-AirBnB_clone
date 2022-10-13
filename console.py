@@ -149,7 +149,6 @@ class HBNBCommand(cmd.Cmd):
         if len(list_of_str) == 3:
             print("** value missing **")
 
-        the_instance.save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
