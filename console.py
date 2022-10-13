@@ -3,6 +3,8 @@
 
 
 import cmd
+
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
@@ -125,24 +127,21 @@ class HBNBCommand(cmd.Cmd):
         list_of_str = line.split()
         if not line:
             print("** class name missing **")
-        if line not in classes:
+        if list_of_str[0] not in classes:
             print("** class doesn't exist **")
-        if len(line) < 2:
+        if len(line) == 1:
             print("** instance id missing **")
         obj = storage.all()
+        storage = FileStorage
         key = list_of_str[0] + "." + list_of_str[1]
-        if key not in obj:
+        the_instance = False
+        if not the_instance:
             print("** no instance found **")
         if len(line) < 3:
             print("** attribute name missing **")
         if len(line) < 4:
             print("** value missing **")
-        inst = obj[key]
-        try:
-            inst.__dict__[list_of_str[2]] = eval(list_of_str[3])
-        except:
-            inst.__dict__[list_of_str[2]] = list_of_str[3]
-            inst.save()
+        the_instance.save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
