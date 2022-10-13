@@ -88,9 +88,10 @@ class HBNBCommand(cmd.Cmd):
         """deleting the instance based on the class\
             name and id"""
         list_of_str = line.split()
+        print(line)
         if len(line) == 0:
             print("** class name missing **")
-        elif line[0] not in classes:
+        if list_of_str[0] not in classes:
             print("** class doesn't exist **")
         elif len(list_of_str) < 2:
             print("** instance id missing **")
