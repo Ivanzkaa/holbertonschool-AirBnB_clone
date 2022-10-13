@@ -125,12 +125,11 @@ class HBNBCommand(cmd.Cmd):
         class and id, by adding or updating\
         attribute"""
         list_of_str = line.split()
-
         if len(list_of_str) == 0:
             print("** class name missing **")
         elif list_of_str[0] not in classes:
             print("** class doesn't exist **")
-        elif len(line) == 1:
+        elif len(list_of_str) == 1:
             print("** instance id missing **")
         else:
 
