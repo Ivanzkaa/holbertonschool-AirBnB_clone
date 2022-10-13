@@ -126,28 +126,29 @@ class HBNBCommand(cmd.Cmd):
         attribute"""
         list_of_str = line.split()
 
-        if not line:
-            print("** class name missing **")
         if len(list_of_str) == 0:
+            print("** class name missing **")
+        elif list_of_str[0] not in self.__classes__:
             print("** class doesn't exist **")
-        if len(line) == 1:
+        elif len(line) == 1:
             print("** instance id missing **")
+        else:
 
-        obj_key = list_of_str[0] + "." + list_of_str[1]
-        storage = FileStorage()
-        all_obj = storage.all()
-        the_instance = 0
+            obj_key = list_of_str[0] + "." + list_of_str[1]
+            storage = FileStorage()
+            all_obj = storage.all()
+            the_instance = 0
 
-        for key, value in all_obj.items():
-            if key == obj_key:
-                the_instance = value
+            for key, value in all_obj.items():
+                if key == obj_key:
+                    the_instance = value
 
-        if not the_instance:
-            print("** no instance found **")
-        if len(list_of_str) == 2:
-            print("** attribute name missing **")
-        if len(list_of_str) == 3:
-            print("** value missing **")
+            if not the_instance:
+                print("** no instance found **")
+            if len(list_of_str) == 2:
+                print("** attribute name missing **")
+            if len(list_of_str) == 3:
+                print("** value missing **")
 
 
 if __name__ == '__main__':
