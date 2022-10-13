@@ -143,9 +143,9 @@ class HBNBCommand(cmd.Cmd):
 
         if not the_instance:
             print("** no instance found **")
-        if len(line) < 3:
+        if len(line) < 2:
             print("** attribute name missing **")
-        if len(line) < 4:
+        if len(line) < 3:
             print("** value missing **")
 
         the_instance.save()
