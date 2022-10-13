@@ -41,7 +41,7 @@ class HBNBCommand(cmd.Cmd):
         """creating a new instance of BaseModel\
         , saving to JSON file and printing out\
         the id"""
-        if not line:
+        if len(line) == 0:
             print("** class name missing **")
         elif line not in classes:
             print("** class doesn't exist **")
@@ -55,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
         of a string based on the class name\
         and id"""
         list_of_str = line.split()
-        if not line:
+        if len(line) == 0:
             print("** class name missing **")
         elif line[0] not in classes:
             print("** class doesn't exist **")
@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         """deleting the instance based on the class\
             name and id"""
         list_of_str = line.split()
-        if not line:
+        if len(line) == 0:
             print("** class name missing **")
         elif line[0] not in classes:
             print("** class doesn't exist **")
@@ -94,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
         list_of_str = line.split()
         obj = storage.all()
         for key in obj.keys():
-            if list_of_str:
+            if len(list_of_str) >= 1:
                 if list_of_str[0] not in classes:
                     print("** class doesn't exist **")
                     break
