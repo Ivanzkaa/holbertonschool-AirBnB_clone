@@ -125,7 +125,7 @@ class HBNBCommand(cmd.Cmd):
         list_of_str = line.split()
         if len(line) == 0:
             print("** class name missing **")
-        elif line not in classes:
+        elif list_of_str not in classes:
             print("** class doesn't exist **")
         elif len(line) < 2:
             print("** instance id missing **")
