@@ -136,7 +136,6 @@ class HBNBCommand(cmd.Cmd):
         obj_key = list_of_str[0] + "." + list_of_str[1]
         storage = FileStorage()
         all_obj = storage.all()
-        the_instance = False
 
         for key, value in all_obj.items():
             if key == obj_key:
