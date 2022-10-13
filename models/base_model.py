@@ -3,8 +3,8 @@
 
 
 from datetime import datetime
-import uuid
 import models
+import uuid
 
 
 t_data = "2017-06-14T22:31:03.285259"
@@ -39,6 +39,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = self.created_at
+            models.storage.new(self)
 
     def save(self):
         """updating the public instance with the current\
