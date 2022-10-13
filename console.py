@@ -3,8 +3,9 @@
 
 
 import cmd
+import json
 from models.base_model import BaseModel
-import models
+from models import storage
 
 
 
@@ -46,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             base_ins = eval(line)
-            base_ins.save
+            base_ins.save()
             print(base_ins.id)
 
     def do_show(self, line):
@@ -61,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(list_of_str) < 2:
             print("** instance id missing **")
         else:
-            obj = models.storage.all()
+            obj = storage.all()
             key = list_of_str[0] + "." + list_of_str[1]
             if key in obj:
                 print(obj[key])
@@ -79,11 +80,11 @@ class HBNBCommand(cmd.Cmd):
         elif len(list_of_str) < 2:
             print("** instance id missing **")
         else:
-            obj = models.storage.all()
+            obj = storage.all()
             key = list_of_str[0] + "." + list_of_str[1]
             if key in obj:
                 del obj[key]
-                models.storage.save()
+                storage.save()
             else:
                 print("** no instance found **")
 
@@ -91,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
         """printing the string representation of all\
         instances based or not on the same class"""
         list_of_str = line.split()
-        obj = models.storage.all()
+        obj = storage.all()
         for key in obj.keys():
             if list_of_str:
                 if list_of_str[0] not in classes:
@@ -99,8 +100,8 @@ class HBNBCommand(cmd.Cmd):
                     break
                 if obj[key].__class__.__name__ == list_of_str[0]:
                     print(obj[key])
-                else:
-                    print(obj[key])
+            else:
+                print(obj[key])
 
     def do_update(self, line):
         """updating the instance based on the\
@@ -113,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(line) < 2:
             print("** instance id missing **")
-        obj = models.storage.all()
+        obj = storage.all()
         key = list_of_str[0] + "." + list_of_str[1]
         if key not in obj:
             print("** no instance found **")
