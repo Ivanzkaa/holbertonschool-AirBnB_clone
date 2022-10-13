@@ -125,17 +125,17 @@ class HBNBCommand(cmd.Cmd):
         list_of_str = line.split()
         if len(line) == 0:
             print("** class name missing **")
-        elif list_of_str not in classes:
+        if line not in classes:
             print("** class doesn't exist **")
-        elif len(line) < 2:
+        if len(line) < 2:
             print("** instance id missing **")
         obj = storage.all()
         key = list_of_str[0] + "." + list_of_str[1]
         if key not in obj:
             print("** no instance found **")
-        elif len(line) < 3:
+        if len(line) < 3:
             print("** attribute name missing **")
-        elif len(line) < 4:
+        if len(line) < 4:
             print("** value missing **")
         inst = obj[key]
         try:
