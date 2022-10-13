@@ -43,12 +43,13 @@ class HBNBCommand(cmd.Cmd):
         the id"""
         if len(line) == 0:
             print("** class name missing **")
-        elif line not in classes:
+        try:
+            str = line + "()"
+            base_inst = eval(str)
+            base_inst.save()
+            print(base_inst.id)
+        except:
             print("** class doesn't exist **")
-        else:
-            base_ins = eval(line)()
-            base_ins.save()
-            print(base_ins.id)
 
     def do_show(self, line):
         """printing the representation\
