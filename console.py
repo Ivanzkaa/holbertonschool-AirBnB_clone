@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
         elif line not in classes:
             print("** class doesn't exist **")
         else:
-            base_ins = eval(line)
+            base_ins = eval(line)()
             base_ins.save()
             print(base_ins.id)
 
@@ -57,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
         list_of_str = line.split()
         if not line:
             print("** class name missing **")
-        elif line not in classes:
+        elif line[0] not in classes:
             print("** class doesn't exist **")
         elif len(list_of_str) < 2:
             print("** instance id missing **")
@@ -75,7 +75,7 @@ class HBNBCommand(cmd.Cmd):
         list_of_str = line.split()
         if not line:
             print("** class name missing **")
-        elif line not in classes:
+        elif line[0] not in classes:
             print("** class doesn't exist **")
         elif len(list_of_str) < 2:
             print("** instance id missing **")
