@@ -134,11 +134,11 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
 
         obj_key = list_of_str[0] + "." + list_of_str[1]
-        storage = FileStorage
-        obj = storage.all()
+        storage = FileStorage()
+        all_obj = storage.all()
         the_instance = False
 
-        for key, value in obj.items():
+        for key, value in all_obj.items():
             if key == obj_key:
                 the_instance = value
 
