@@ -3,14 +3,16 @@
 
 
 import cmd
-import json
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 
 
 
 classes = {"BaseModel", "User", "Review", "Place",
             "State", "City", "Amenity"}
+
+
 class HBNBCommand(cmd.Cmd):
     """the hbnb class"""
     prompt = '(hbnb) '
@@ -43,6 +45,7 @@ class HBNBCommand(cmd.Cmd):
         the id"""
         if len(line) == 0:
             print("** class name missing **")
+
         try:
             str = line + "()"
             base_inst = eval(str)
