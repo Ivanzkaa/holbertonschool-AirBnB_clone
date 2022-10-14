@@ -134,20 +134,19 @@ class HBNBCommand(cmd.Cmd):
         else:
 
             obj_key = list_of_str[0] + "." + list_of_str[1]
-            storage = FileStorage()
             all_obj = storage.all()
             the_instance = 0
-
             for key, value in all_obj.items():
                 if key == obj_key:
                     the_instance = value
-
             if not the_instance:
                 print("** no instance found **")
-            if len(list_of_str) == 2:
+            elif len(list_of_str) == 2:
                 print("** attribute name missing **")
-            if len(list_of_str) == 3:
+            elif len(list_of_str) == 3:
                 print("** value missing **")
+            else:
+                setattr(the_instance, list_of_str[2], list_of_str[3])
 
 
 if __name__ == '__main__':
