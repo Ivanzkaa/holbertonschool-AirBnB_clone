@@ -1,5 +1,6 @@
 footer {
-    color: white;
+    color: black;
+    background-color: white;
     height: 60px;
     width: 100%;
     position: fixed;
@@ -12,5 +13,5 @@ footer p {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-5-%, -50%);
+    transform: translate(-50%, -50%);
 }
